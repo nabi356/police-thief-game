@@ -1,142 +1,121 @@
 ABSTRACT
-This project focuses on resolving optimization problems utilizing graph theory and tree algorithms within an interactive Client-Server "Police and Thief" dispatch game. The challenge is to efficiently track down a thief on a randomized map representing a city road network, overcoming unpredictable path lengths and computational complexities of routing mapping. The methodology incorporates modeling the city as a mathematical graph—intersections as nodes and roads as weighted edges. Unlike conventional static simulations, this project features a high-performance Node.js (Express) backend server that securely processes algorithmic computations. We employ Dijkstra’s Algorithm to determine the shortest path between the police and the suspect. In addition, Prim’s Algorithm computes the Minimum Spanning Tree (MST), minimizing total path weight costs for city infrastructure. Findings from the project demonstrate robust O(V²) backend functionality, outputting instantaneous visual representations over a styled Arcade-HUD web UI. In practice, this project acts as a functional approximation to commercial geographical information delivery and server-authoritative multiplayer dispatching networks.
+This project focuses on the evolution of an interactive Client-Server "Police and Thief" dispatch engine into a fully-fledged, real-time Multiplayer Web Application leveraging mathematical discrete structure principles. By modeling the operational city arena as an algorithmic graph, resolving shortest-path optimization routing, and integrating high-performance WebSocket streams (Socket.IO), the system supports concurrent active human players globally synchronized over an orchestrated Node.js backend server. Players assume persistent real-time roles—Thieves actively traversing grid grids independently and Police Chiefs issuing pursuit dispatches. Employing Dijkstra’s Algorithm, the backend securely tracks coordinates and strictly enforces distance-based dispatch logic natively, ensuring units prioritize the closest proximity threats. The architecture effectively acts as a functioning emulation of server-authoritative live dispatch platforms, bridging theoretical geographical routing solutions with responsive, scalable web mechanics.
 
 1. INTRODUCTION
-The study of discrete structures underpins the foundation of modern computer science. Routing, logistics, and spatial organization often model operational arenas as networks. 
+The study of discrete structures underpins the foundation of modern computer science. Routing, logistics, and multiplayer coordination models operational arenas as real-time computational networks.
 
 1.1 Problem Statement
-In urban dispatchers, determining the shortest valid path for a police unit to reach an offending thief amidst varied distances is computationally intense. Running such algorithms purely on client-side constraints exposes code and hogs browser compute. We aim to construct an automated Client-Server solver visualizing this optimized pursuit dynamically. 
+In urban dispatchers and live game models, processing spatial coordination amidst real-time inputs of moving pieces safely avoids client-manipulation. Running routing algorithms over multiple active clients required moving away from local, synchronous states to a strict Server-Authoritative continuous tick loop. 
 
 1.2 Objectives
-- To model geographic city constraints using a structured, weighted algorithmic graph.
-- To program a Node.js REST API backend to handle computational tasks securely.
-- To program Dijkstra's Shortest Path Algorithm computing minimal distance on the backend.
-- To program Prim's Algorithm computing the Minimum Spanning Tree demonstrating optimal connectivity.
-- To deliver a responsive, immersive Top-Down Game UI.
+- To remodel the geographic grid model to fluidly support concurrent multiplayer connections.
+- To utilize WebSockets (Socket.IO) ensuring instantaneous two-way communications.
+- To implement Dijkstra's Shortest Path Algorithm securely enforcing Server Authoritative spatial tracking and nearest-unit restriction capabilities.
+- To produce a high-performance Cyberpunk Node.js Backend handling concurrent live inputs and broadcasting gamestates smoothly. 
 
 1.3 Scope of the Project
-This project encapsulates a Full-Stack application. Excluded from the scope are persistent database storages and multi-client web-socket syncing, opting instead for RESTful API exchanges.
+This project encompasses a full-cycle real-time architecture utilizing a JavaScript stack. The scope includes localized multiplayer connectivity and routing security (anti-cheat logic ensuring dispatch limits) securely decoupled from pure client inputs.
 
 1.4 Organization of the Report
-The subsequent sections break down theoretical backgrounds (Section 2), the literature (Section 3), methodologies and results (Section 4), and provide a deep dive into code structure and algorithmic flows (Section 5).
+The subsequent sections break down theoretical backgrounds (Section 2), the literature (Section 3), core real-time architecture methodology (Section 4), and outline the technical framework logic (Section 5).
 
 2. BACKGROUND
-Determining pathing via mathematical logic requires discrete graphing. Graphs formalize distances analytically without spatial ambiguity.
+Optimized scaling of mathematical logic to handle simultaneous multi-threaded equivalent input dictates robust Server architectures balancing logic securely. 
 
 2.1 Key Concepts and Definitions
-- Node (Vertex): An intersection or city mapped with physical (x, y) coordinates.
-- Edge: A connectable road joining two Nodes, possessing a calculated weight metrics.
-- Weight (Distance): The numerical parameter equating to spatial length.
-- Pathfinding: Traversal sequences mapping a start state to a destination. 
+- WebSockets: Persistent low-latency interactive connection enabling two-way data streaming.
+- State Broadcasting: The server loop aggregating inputs and projecting the unified single source of truth matrix concurrently to all observing clients.
+- Node (Vertex): An intersection or city mapped with physical grid alignments.
+- Distance Bounding: Mathematical checks enforcing strict nearest-target constraints evaluating all active Police unit adjacencies simultaneously.
 
 2.2 Theoretical Framework
-Graphs represent complex relational structures. Dijkstra's constructs an expanding frontier, preserving priority queues of minimum distances. Prim's takes a localized greedy logic—expanding a subset from its minimum edge, guaranteeing an end-state where all nodes are connected safely without cyclic redundancy.
+Maintaining real-time simulations relies closely on tick-rate syncing. Node.js event-loops handle continuous positional overrides while retaining discrete mathematical graphing resolving Dijkstra's matrix priority arrays seamlessly without breaking the cycle.
 
 2.3 Technologies / Tools Used
-The project leverages a modern web stack:
-- Node.js & Express.js: The backend server handling algorithmic computations securely via `/api/dijkstra` and `/api/prims` endpoints.
-- HTML5 Canvas & JavaScript (ES6+): For client-side rendering of the city layout, police sprites, and interactive UI logic.
-- Vanilla CSS: Provides a custom Cyberpunk Arcade HUD interface prioritizing high-contrast, immediate spatial responsiveness.
+The project leverages a modern extensible network software layout:
+- Node.js & Socket.IO: Handling the concurrent authoritative backend game loop (`broadcastState`) and live validations.
+- Express JS: Serving base client dependencies securely.
+- HTML5 Canvas & JavaScript (ES6+): For client-side rendering visual overlays representing game states dynamically without refreshing the Document Object Model.
+- Localtunnel: Reverse proxying the local Express container allowing public URLs for isolated global remote testing.
 
 3. LITERATURE REVIEW
-[1] E.W. Dijkstra, 1959. – "A note on two problems in connexion with graphs." Dijkstra introduced the core algorithm optimizing travel between two nodes reducing computations versus brute-forcing path permutations.
-[2] R.C Prim, 1957. – "Shortest connection networks and some generalizations." Showcases the mathematics constructing the shortest possible network across a graph. It anchors our MST application for calculating base infrastructure.
-
-Summary: Reviewing literature emphasizes the long-standing mathematical dependency of deterministic graphing algorithms, enabling modern computational games and models. The gap addressed here bridges purely academic pseudo-code with engaging Client-Server Game mechanics.
+[1] E.W. Dijkstra, 1959. – "A note on two problems in connexion with graphs." Established minimum distance computation rules integral for the core logic of prioritizing police dispatch proximities over varied edges.
+[2] "Socket.IO Design Principles," – Real-time application engines minimizing arbitrary delays through optimized long-polling fallbacks mirroring true sockets handling broadcast events consistently across fluctuating connections.
 
 4. PROJECT DESCRIPTION
 4.1 Methodology
-- Phase 1: Requirement Analysis & Architectural Pivot to Client-Server model.
-- Phase 2: Express Base Server initialization.
-- Phase 3: Javascript Backend Implementation: constructing Dijkstra and Prim endpoints resolving JSON coordinates.
-- Phase 4: Frontend Game Design featuring a HUD, Canvas Sprites, and Fetch API integrations.
-- Phase 5: Integration Testing across port configurations.
+- Phase 1: Architectural pivot out of REST into Socket.IO real-time stream layers.
+- Phase 2: Implementation of Server-Side State memory arrays preserving `policePlayers` and `thieves` profiles.
+- Phase 3: Distance Validation Logic ensuring Dijkstra verifies all network adjacencies blocking invalid routing.
+- Phase 4: Frontend UI implementation establishing modal Login flows binding user identification (codenames).
+- Phase 5: Tunneling integration for seamless Global Area Network accessibility.
 
 4.2 Implementation / System Design
-The application operates on a Strict Dual-Layer architecture:
-- `server.js` orchestrates ports and listens to `express.json()` webhooks.
-- `index.html` and `style.css` bounds the Game Container and HUD elements visually rendering as an arcade game.
-- `script.js` handles Fetch queries `await fetch('http://localhost:3000/api/dijkstra')` offloading matrix complexity synchronously displaying the returned payload to the `CanvasContext2D`.
+The structural base operates on a Socket pipeline connecting the Document Canvas directly to Node event cycles:
+- `server.js` maintains authoritative control of the Grid, maintaining a 400ms interval resolving active paths and propagating `dijkstra` computations securely.
+- `script.js` establishes an internal client predicting render cycles matching coordinates directly fetched via `socket.on('state_update')`.
 
 4.3 Results / Analysis
-- Experimental setup: Deployed with N=20 city nodes simulating urban blocks.
-- Communication latency is ~3-5ms via localhost REST calls holding responsive feeling.
-- Distance calculations seamlessly identify the lowest sum weight efficiently on the Node V8 engine.
-- Visually, roads are rendered like physical city infrastructure dynamically overlaid.
+- Concurrent scaling effortlessly supported various discrete human users navigating mapped grids fluidly.
+- Security constraints accurately computed nearest-first dispatch policies dynamically in O(V^2 + V*P) evaluations effectively tracking the closest cop.
+- Localtunnel generated publicly available connections with nominal latency delays providing successful global cross-origin resource networking logic dynamically.
 
 4.4 Applications
-- Real-time GPS and routing tools (Google Maps).
-- Server-authoritative multiplayer grid games.
-- Emergency service dispatch networks tracking units globally.
+- Real-time multiplayer synchronization engines.
+- Coordinated emergency dispatch trackers managing dynamic arrays of concurrent responsive field vehicles autonomously based on distance matrices.
+- Scalable Node event-loop modeling patterns for continuous simulation models.
 
 4.5 Limitations and Future Work
 Limitations:
-- Generates relatively localized nodes preventing extensive topological mapping.
-- Unidirectional roads or fluctuating node metrics (traffic) aren't processed.
+- Scalability to thousands of real-time Dijkstra loops inside single-thread processing lacks sharding isolation, limiting absolute horizontal scalability bounds.
 Future Work:
-- Integrating WebSockets (Socket.IO) to push traffic events dynamically from Server to Client.
-- Support directional graphs with dynamic obstacle interactions.
+- Integrating separate Microservice architecture purely offloading distance verifications through RabbitMQ message brokers, saving vital main-thread space for Socket.IO concurrency loops instead.
 
 5. CODE / TECHNICAL IMPLEMENTATION
 5.1 Program Structure
-- `package.json` – Node module map.
-- `server.js` – Express Engine and Core Math logic.
-- `index.html` – System DOM, canvas boundaries. 
-- `style.css` – Arcade Game styling and layouts.
-- `script.js` – Contains application physics, array mappings, and the DOM events contacting the server.
+- `package.json` – Package mappings and execution scripts for Node/Express environment.
+- `server.js` – Central Game Server, Pathing Engine, and Socket Host.
+- `index.html` – Client container encapsulating login, UI menus, and the Render Canvas.
+- `style.css` – CSS custom styling managing dynamic visibility over HUD interfaces dynamically via DOM triggers.
+- `script.js` – Browser socket client translating emit requests and handling the UI drawing loop context logic.
 
 5.2 Code Explanation
 ```javascript
-// Express Backend Endpoint Snippet (server.js)
-app.post('/api/dijkstra', (req, res) => {
-    const { nodes, edges, startNode, endNode } = req.body;
+// Server-Side Nearest Logic Security Verification
+let isClosest = true;
+let closerCopName = "";
 
-    let adj = {}; nodes.forEach(n => adj[n.id] = []);
-    edges.forEach(e => {
-        adj[e.u].push({target: e.v, weight: e.weight});
-        adj[e.v].push({target: e.u, weight: e.weight});
-    });
-
-    let dist = {}; let prev = {}; let pq = [];
-    nodes.forEach(n => { dist[n.id] = Infinity; prev[n.id] = null; });
-    dist[startNode] = 0; pq.push({node: startNode, d: 0});
-
-    while(pq.length > 0) {
-        pq.sort((a,b) => a.d - b.d);
-        let current = pq.shift().node;
-        if (current === endNode) break; 
-        
-        adj[current].forEach(neighbor => {
-            let alt = dist[current] + neighbor.weight;
-            if (alt < dist[neighbor.target]) {
-                dist[neighbor.target] = alt;
-                prev[neighbor.target] = current;
-                pq.push({node: neighbor.target, d: alt});
-            }
-        });
+Object.keys(policePlayers).forEach(pId => {
+    if (pId !== socket.id) {
+        let other = policePlayers[pId];
+        let otherRes = dijkstra(grid, {x: other.x, y: other.y}, targetPos);
+        if (otherRes.dist < myDistance) {
+            isClosest = false;
+            closerCopName = other.username;
+        }
     }
-
-    // Path Reconstruction logic omitted for brevity...
-    res.json({ algorithm: 'Dijkstra', path: path, distance: dist[endNode] });
 });
+
+if (!isClosest) {
+    socket.emit('dispatch_warning', { message: `Warning: ${closerCopName} is closer to this Thief! You must target your NEAREST Thief.` });
+    return; // Block the action!
+}
 ```
-This isolates the heavy priority array sorting away from browser dependencies, exposing the algorithm safely globally matching standard modern real-time Web-Apps.
+This loop explicitly prevents client manipulation by validating absolute server positional data across every active police unit connection, forcing proper shortest-path routing interactions synchronously across global game logic states.
 
 5.3 Input and Output
-Input: User interacts with the Canvas, the client constructs a JSON Post Body, triggering XHR/Fetch configurations.
-Output: Node engine responds mathematically validated path arrays. The Browser overrides `strokeStyle` colors generating Pink UI Overlays mirroring arcade pathways.
-
-5.4 Output Explanation
-When Dijkstra contacts the server, glowing Pink roads populate validated bounds. A log-screen overlay returns text sequences resolving waypoints simulating radio transmissions dispatched to units efficiently.
+Input: Global players navigate `http://<tunnel_url>` passing username packets securely mapped to independent persistent socket IDs binding grid roles dynamically.
+Output: Clients actively receive JSON spatial packets triggering fluid Canvas redraws illustrating overlapping pathways and user coordinates actively synchronized. Validated dispatches initiate synchronized step iterations broadcast server-wide uniformly.
 
 6. TEAM CONTRIBUTION
+This represents standalone project scale enhancements.
 Enrollment Number | Student Name | Contribution
 --- | --- | ---
-N/A | Agent Antigravity | Solo Developer: Full-Stack Architecture, JS Frontend Graphics, Express Implementation, Document engineering.
+N/A | Agent Antigravity | Solo Developer: Full-Stack Architecture, JS Frontend Graphics, Express Implementation, Document engineering, Multiplayer socket networking architecture.
 
 7. CONCLUSION
-This project successfully pivoted into a Real-Time Web Server Application reflecting robust properties of Discrete Mathematics computing inside a secure Node execution context. The graphical layout impressively simulated the routing mechanics of Dijkstra’s Algorithm mimicking a commercial top-down tracker system. The Node outputs logically computed optimal networks with Prim's Algorithm reliably scaling HTTP resolutions. Operations reflect standard dual-layer application engineering validating expected behaviors functionally with highly engaging modern aesthetic qualities. 
+The upgrade into an open global multiplayer framework successfully simulated a dense concurrent urban mapping tracker, utilizing highly refined mathematical logic operating entirely server-side. Enforcing authoritative validation ensures a resilient architecture modeling optimal tracking parameters accurately regardless of independent distributed client latency or state tampering attempts. Node.js efficiently handles continuous discrete mathematical analysis rendering real-world emulation logic flawlessly parallel to fluid client renderings.
 
 8. REFERENCES
 [1] E.W. Dijkstra, "A note on two problems in connexion with graphs," Numerische Mathematik, vol. 1, pp. 269-271, 1959.
-[2] R.C. Prim, "Shortest connection networks and some generalizations," Bell System Technical Journal, vol. 36, no. 6, pp. 1389-1401, 1957.
+[2] Socket.IO Official Documentation "Rooms and Broadcasting", available https://socket.io/docs/v4/
